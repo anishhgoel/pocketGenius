@@ -4,3 +4,5 @@ pydantic
 openai
 pandas 
 python-dotenv
+typing 
+datetime
