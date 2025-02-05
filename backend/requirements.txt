@@ -7,4 +7,6 @@ python-dotenv
 typing 
 datetime
 yfinance
-requests
+requests 
+redis
+logging
