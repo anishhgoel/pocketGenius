@@ -9,8 +9,14 @@ PocketGenius is an AI-powered personal finance assistant designed to help users:
 
 This project combines **FastAPI**, **OpenAI GPT**, **Redis caching**, **yfinance** market data, and a **React frontend** to deliver an interactive financial analysis tool.
 
+
+---
+
+
 ### 🌐 Live Demo  
 👉 **[PocketGenius App](https://pocket-genius.vercel.app/)**  
+
+---
 
 
 ## 📌 Features
@@ -21,6 +27,7 @@ This project combines **FastAPI**, **OpenAI GPT**, **Redis caching**, **yfinance
 ✅ **Sector Breakdown:** Get an overview of your portfolio’s sector diversification.  
 ✅ **Macro-Outlook:** AI-generated insights into the current macroeconomic environment.  
 
+---
 
 
 ## 🛠 Tech Stack
@@ -34,19 +41,23 @@ This project combines **FastAPI**, **OpenAI GPT**, **Redis caching**, **yfinance
 
 ---
 
+
 ## 🚀 Installation & Setup
 
 ### 1️⃣ Clone the Repository
-
+```
 git clone https://github.com/yourusername/pocketGenius.git
 cd pocketGenius
+```
 
 ### 1️⃣ Clone the Repository
 
+```
 cd backend
 python -m venv venv
 source venv/bin/activate  # On Windows use: .\venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 #### Create a .env file in backend/ with your OpenAI API key:
 
