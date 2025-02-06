@@ -184,7 +184,7 @@ function App() {
       </header>
       <p style={{ fontSize: "0.9rem", color: "gray", fontStyle: "italic", textAlign: "center" }}>
       ⚠️⚠️ The backend may take some time to load as its a free-tier deployment on Render and those spin down after inactivity, 
-      causing delays of 50 seconds or more.
+      causing delays of 50 seconds or more and I can't afford a paid plan just yet 😅
     </p>
 
       {/* 1) Upload CSV */}
