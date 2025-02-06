@@ -178,7 +178,7 @@ function App() {
   // Render
   return (
     <div style={{ padding: "1rem" }}>
-      <h1>FinGenius - helping you with finances</h1>
+      <h1>Pocket Genius - helping you with finances</h1>
 
       {/* 1) Upload CSV */}
       <section style={{ border: "1px solid #ccc", marginBottom: "1rem", padding: "1rem" }}>
