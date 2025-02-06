@@ -11,3 +11,4 @@ requests
 redis
 loguru
 python-multipart
+axios
