@@ -15,9 +15,6 @@ from backend.models.finance_models import Transaction, Portfolio
 
 from backend.services.openai_service import analyze_transaction
 from backend.services.investment_service import InvestmentAnalyzer
-
-
-
 load_dotenv()
 setup_logging()
 logger = logging.getLogger(__name__)
