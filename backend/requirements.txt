@@ -10,3 +10,4 @@ yfinance
 requests 
 redis
 loguru
+python-multipart

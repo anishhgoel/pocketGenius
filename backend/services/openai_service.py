@@ -1,13 +1,15 @@
 import os
 import logging
-import openai
+import json
 from typing import Dict
+from openai import AsyncOpenAI  # Changed to AsyncOpenAI
 from ..models.finance_models import Transaction
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
-
-openai.api_key = os.getenv(OPENAI_API_KEY)
+load_dotenv()
+client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Using AsyncOpenAI client
 
 async def analyze_transaction(transaction: Transaction) -> Dict[str, str]:
     """
@@ -25,7 +27,7 @@ async def analyze_transaction(transaction: Transaction) -> Dict[str, str]:
       Date: {transaction.date}
     """
     try:
-        response = await openai.ChatCompletion.acreate(
+        response = await client.chat.completions.create(  # This will now work with await
             model="gpt-4",
             messages=[
                 {"role": "user", "content": prompt}
@@ -33,14 +35,9 @@ async def analyze_transaction(transaction: Transaction) -> Dict[str, str]:
         )
         content = response.choices[0].message.content
 
-        # attempt to parse JSON from the content
-        # For production, i think parsing should have more robust approach
-        import json
-        parsed = {}
         try:
             parsed = json.loads(content)
         except json.JSONDecodeError:
-            # fallback if not a valid JSON
             logger.warning("OpenAI response not in valid JSON. Returning fallback.")
             parsed = {
                 "category": "Uncategorized",
@@ -48,7 +45,6 @@ async def analyze_transaction(transaction: Transaction) -> Dict[str, str]:
                 "savings_potential": "None"
             }
 
-        # ensuring that the keys exist
         return {
             "category": parsed.get("category", "Uncategorized"),
             "budget_recommendation": parsed.get("budget_recommendation", "No recommendation"),
