@@ -107,7 +107,7 @@ Now, open http://localhost:3000 to view the frontend.
   ```
 
 ### 2️⃣ Upload Transactions
-### **POST** /upload-transactions
+#### **POST** /upload-transactions
 -	**Description:** Upload a CSV file containing transactions to analyze.
 -	**Request Body:**
 ```
@@ -128,5 +128,152 @@ Now, open http://localhost:3000 to view the frontend.
       "savings_potential": "$10 savings possible"
     }
   ]
+}
+```
+
+
+### 3️⃣ Analyze Portfolio
+
+#### POST /analyze-portfolio
+-	**Description:** Analyze a user’s investment portfolio.
+-	**Request Body:**
+```{
+  "items": [
+    { "symbol": "AAPL", "quantity": 10, "purchase_price": 150 }
+  ]
+}
+```
+
+- **Response:**  
+```{
+  "total_investment": 1500,
+  "roi_percent": 10.5,
+  "sharpe_ratio": 1.2,
+  "gpt_advice": "Your portfolio has a moderate risk level."
+}
+```
+
+### 4️⃣ Analyze Portfolio with Risk Tolerance
+
+POST /analyze-portfolio-advanced
+-	**Description:** Analyze portfolio with risk tolerance customization.
+-	**Query Parameters:**
+-	risk_tolerance: "conservative" | "moderate" | "aggressive"
+-	**Request Example:**
+```
+{
+  "items": [
+    { "symbol": "GOOGL", "quantity": 5, "purchase_price": 2800 }
+  ]
+}
+```
+- **Response:**  
+```
+{
+  "total_investment": 14000,
+  "roi_percent": 15.2,
+  "risk_analysis": "Aggressive strategy recommended."
+}
+```
+
+### 5️⃣ Portfolio Sector Breakdown
+
+#### POST /portfolio-sector-breakdown
+-	**Description:** Returns sector distribution of investments.
+-	**Request Example:**
+```
+{
+  "items": [
+    { "symbol": "TSLA", "quantity": 8, "purchase_price": 700 },
+    { "symbol": "AAPL", "quantity": 5, "purchase_price": 150 }
+  ]
+}
+```
+- **Response:**  
+```
+{
+  "sector_breakdown": {
+    "Technology": 75.2,
+    "Automotive": 24.8
+  }
+}
+```
+
+
+### 6️⃣ Analyze Single Stock Symbol
+
+#### POST /analyze-symbol
+-	**Description:** Fetch details of a single stock.
+-	**Request Body:**
+```
+{
+  "symbol": "AAPL",
+  "purchase_price": 150,
+  "quantity": 10,
+  "risk_tolerance": "moderate"
+}
+```
+-	**Response:**
+```
+{
+  "symbol": "AAPL",
+  "quantity": 10,
+  "invested_amount": 1500,
+  "current_price": 160,
+  "current_value": 1600,
+  "roi_percent": 6.67,
+  "local_recommendation": "Hold",
+  "ai_recommendation": "Consider holding AAPL based on moderate risk.",
+  "fundamentals": {
+    "sector": "Technology",
+    "PE_ratio": 24.5
+  }
+}
+```
+
+### 7️⃣ Analyze Portfolio with Custom Macroeconomic Inputs
+
+#### POST /analyze-portfolio-custom
+-	**Description:** Let users override risk-free rate & macro factors.
+-	**Request Body:**
+```
+{
+  "portfolio": {
+    "items": [
+      { "symbol": "MSFT", "quantity": 10, "purchase_price": 320 }
+    ]
+  },
+  "risk_free_rate": 2.0,
+  "macro_inflation": 3.5,
+  "macro_interest_rate": 5.0,
+  "risk_tolerance": "aggressive"
+}
+```
+-	**Response:**
+```
+{
+  "total_investment": 3200,
+  "roi_percent": 8.5,
+  "macro_analysis": {
+    "inflation": 3.5,
+    "interest_rate": 5.0,
+    "gdp_growth": 2.1
+  }
+}
+```
+
+### 8️⃣ Get Macroeconomic Outlook
+
+#### GET /macro-outlook
+-	**Description:** Fetch basic macroeconomic data & GPT-generated insights.
+-	**Response:**
+```
+{
+  "macro_data": {
+    "interest_rate": 5.0,
+    "inflation": 3.2,
+    "gdp_growth": 2.1
+  },
+  "macro_outlook": "The economic outlook suggests a stable recovery with moderate inflation risks."
 }
 ```
