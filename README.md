@@ -43,6 +43,29 @@ This project combines **FastAPI**, **OpenAI GPT**, **Redis caching**, **yfinance
 
 ---
 
+## ⚡ Scalability & Architecture  
+
+PocketGenius is designed for **high performance and scalability**, leveraging **FastAPI’s asynchronous capabilities** to handle concurrent requests efficiently.  
+
+### 🚀 Scalability Features
+
+1. **FastAPI for High-Performance Asynchronous Processing**  
+   - FastAPI is asynchronous by design, allowing PocketGenius to handle multiple requests concurrently without blocking execution, making it ideal for high-traffic applications.  
+
+2. **Redis Caching for Optimized Data Retrieval**  
+   - Using Redis as a caching layer significantly reduces response times by storing frequently accessed financial data, decreasing reliance on repeated API calls (e.g., stock market data from yfinance).  
+
+3. **Efficient API Design with Modular Microservices Approach**  
+   - The backend is structured with modular services (e.g., transaction analysis, portfolio evaluation, and market insights), making it easier to scale individual components without affecting the entire system.  
+
+4. **Cloud Deployment with Load Balancing Capabilities**  
+   - Designed for cloud deployment (e.g., Render, AWS, or Vercel), allowing horizontal scaling through auto-scaling (if it is moved to paid plan) instances when traffic increases.  
+
+5. **Database and Caching Separation**  
+   - Separating volatile financial data (cached in Redis) from persistent user data ensures efficient memory usage and improved request handling.  
+
+---
+
 
 ## 🚀 Installation & Setup
 
