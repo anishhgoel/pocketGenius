@@ -110,13 +110,13 @@ Now, open http://localhost:3000 to view the frontend.
 #### **POST** /upload-transactions
 -	**Description:** Upload a CSV file containing transactions to analyze.
 -	**Request Body:**
-```
+```json
 {
   "file": "CSV file containing transactions"
 }
 ```
 - **Response:**  
-```
+```json
 {
   "transactions": [
     {
@@ -137,7 +137,8 @@ Now, open http://localhost:3000 to view the frontend.
 #### POST /analyze-portfolio
 -	**Description:** Analyze a user’s investment portfolio.
 -	**Request Body:**
-```{
+```json
+{
   "items": [
     { "symbol": "AAPL", "quantity": 10, "purchase_price": 150 }
   ]
@@ -145,7 +146,8 @@ Now, open http://localhost:3000 to view the frontend.
 ```
 
 - **Response:**  
-```{
+```json
+{
   "total_investment": 1500,
   "roi_percent": 10.5,
   "sharpe_ratio": 1.2,
@@ -160,7 +162,7 @@ POST /analyze-portfolio-advanced
 -	**Query Parameters:**
 -	risk_tolerance: "conservative" | "moderate" | "aggressive"
 -	**Request Example:**
-```
+```json
 {
   "items": [
     { "symbol": "GOOGL", "quantity": 5, "purchase_price": 2800 }
@@ -168,7 +170,7 @@ POST /analyze-portfolio-advanced
 }
 ```
 - **Response:**  
-```
+```json
 {
   "total_investment": 14000,
   "roi_percent": 15.2,
@@ -181,7 +183,7 @@ POST /analyze-portfolio-advanced
 #### POST /portfolio-sector-breakdown
 -	**Description:** Returns sector distribution of investments.
 -	**Request Example:**
-```
+```json
 {
   "items": [
     { "symbol": "TSLA", "quantity": 8, "purchase_price": 700 },
@@ -190,7 +192,7 @@ POST /analyze-portfolio-advanced
 }
 ```
 - **Response:**  
-```
+```json
 {
   "sector_breakdown": {
     "Technology": 75.2,
@@ -205,7 +207,7 @@ POST /analyze-portfolio-advanced
 #### POST /analyze-symbol
 -	**Description:** Fetch details of a single stock.
 -	**Request Body:**
-```
+```json
 {
   "symbol": "AAPL",
   "purchase_price": 150,
@@ -214,7 +216,7 @@ POST /analyze-portfolio-advanced
 }
 ```
 -	**Response:**
-```
+```json
 {
   "symbol": "AAPL",
   "quantity": 10,
@@ -236,7 +238,7 @@ POST /analyze-portfolio-advanced
 #### POST /analyze-portfolio-custom
 -	**Description:** Let users override risk-free rate & macro factors.
 -	**Request Body:**
-```
+```json
 {
   "portfolio": {
     "items": [
@@ -250,7 +252,7 @@ POST /analyze-portfolio-advanced
 }
 ```
 -	**Response:**
-```
+```json
 {
   "total_investment": 3200,
   "roi_percent": 8.5,
@@ -267,7 +269,7 @@ POST /analyze-portfolio-advanced
 #### GET /macro-outlook
 -	**Description:** Fetch basic macroeconomic data & GPT-generated insights.
 -	**Response:**
-```
+```json
 {
   "macro_data": {
     "interest_rate": 5.0,
