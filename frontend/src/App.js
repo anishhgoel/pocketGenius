@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function App() {
-  // For each endpoint, we'll have some state to store input & results
 
-  // 1) upload-transactions
+  // upload-transactions
   const [csvFile, setCsvFile] = useState(null);
   const [transactionsResult, setTransactionsResult] = useState(null);
 
-  // 2) analyze-portfolio
+  //  analyze-portfolio
   const [portfolio, setPortfolio] = useState({
     items: [{ symbol: "", quantity: 0, purchase_price: 0 }]
   });
@@ -18,10 +17,10 @@ function App() {
   const [riskTolerance, setRiskTolerance] = useState("moderate");
   const [advancedResult, setAdvancedResult] = useState(null);
 
-  // 4) sector breakdown
+  //  sector breakdown
   const [sectorBreakdownResult, setSectorBreakdownResult] = useState(null);
 
-  // 5) single symbol
+  //  single symbol
   const [symbolData, setSymbolData] = useState({
     symbol: "AAPL",
     purchase_price: 150,
@@ -30,7 +29,7 @@ function App() {
   });
   const [symbolResult, setSymbolResult] = useState(null);
 
-  // 6) custom macros
+  // custom macros
   const [customData, setCustomData] = useState({
     portfolio: { items: [{ symbol: "AAPL", quantity: 10, purchase_price: 150 }] },
     risk_free_rate: 2.0,
@@ -40,14 +39,13 @@ function App() {
   });
   const [customResult, setCustomResult] = useState(null);
 
-  // 7) macro-outlook
+  // macro-outlook
   const [macroResult, setMacroResult] = useState(null);
 
   const baseURL = "https://pocketgenius.onrender.com"; 
 
-  // -----------------------------
-  // 1) Upload CSV
-  // -----------------------------
+  //  Upload CSV
+  
   const handleCsvChange = (e) => {
     setCsvFile(e.target.files[0]);
   };
@@ -68,9 +66,7 @@ function App() {
     }
   };
 
-  // -----------------------------
-  // 2) Analyze Portfolio
-  // -----------------------------
+  //  Analyze Portfolio
   const handlePortfolioChange = (idx, field, rawValue) => {
     const newItems = [...portfolio.items];
   
@@ -107,9 +103,7 @@ function App() {
     }
   };
 
-  // -----------------------------
-  // 3) Advanced + riskTolerance
-  // -----------------------------
+  // Advanced + riskTolerance
   const analyzePortfolioAdvanced = async () => {
     try {
       const res = await axios.post(
@@ -123,9 +117,7 @@ function App() {
     }
   };
 
-  // -----------------------------
-  // 4) Sector Breakdown
-  // -----------------------------
+  //  Sector Breakdown
   const portfolioSectorBreakdown = async () => {
     try {
       const res = await axios.post(`${baseURL}/portfolio-sector-breakdown`, portfolio);
@@ -136,9 +128,7 @@ function App() {
     }
   };
 
-  // -----------------------------
-  // 5) Single Symbol
-  // -----------------------------
+  // Single Symbol
   const analyzeSymbolCall = async () => {
     try {
       const res = await axios.post(`${baseURL}/analyze-symbol`, symbolData);
@@ -149,9 +139,7 @@ function App() {
     }
   };
 
-  // -----------------------------
-  // 6) Portfolio custom
-  // -----------------------------
+  //  Portfolio custom
   const analyzePortfolioCustom = async () => {
     try {
       const res = await axios.post(`${baseURL}/analyze-portfolio-custom`, customData);
@@ -162,9 +150,7 @@ function App() {
     }
   };
 
-  // -----------------------------
-  // 7) Macro-outlook
-  // -----------------------------
+  // Macro-outlook
   const macroOutlook = async () => {
     try {
       const res = await axios.get(`${baseURL}/macro-outlook`);
@@ -178,7 +164,24 @@ function App() {
   // Render
   return (
     <div style={{ padding: "1rem" }}>
-      <h1>Pocket Genius - helping you with finances</h1>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+        <h1>Pocket Genius - Helping You with Finances</h1>
+        <a
+          href="https://github.com/anishhgoel/pocketGenius"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            textDecoration: "none",
+            color: "white",
+            backgroundColor: "#24292e",
+            padding: "0.5rem 1rem",
+            borderRadius: "5px",
+            fontWeight: "bold",
+          }}
+        >
+          ⭐ View on GitHub
+        </a>
+      </header>
 
       {/* 1) Upload CSV */}
       <section style={{ border: "1px solid #ccc", marginBottom: "1rem", padding: "1rem" }}>
